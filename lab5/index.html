@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lab 5: HTML5</title>
+<style>
+.box{
+  width:660px;
+  height:125px;
+  margin-top: auto;
+}
+canvas{
+  border:1px solid black;
+  margin:10px 0 0 0;
+}
+
+button {
+  margin: 60px;
+  width: 50px;
+  height: 30px;
+}
+</style>
+</head>
+
+<body>
+<!-- <div style="display:none"> -->
+<div style="display:none">
+  <video id="videoid" width="640" height="360" autoplay loop >
+    <source src="video.mp4" type="video/mp4">
+  </video>
+</div>
+
+<input type="button" value="shuffle" onclick="shuffle()">
+
+<div class="box">
+  <canvas id="canvas00" width="160" height="120" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)"></canvas>
+  <canvas id="canvas01" width="160" height="120" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)"></canvas>
+  <canvas id="canvas02" width="160" height="120" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondrop="drop(event)"></canvas>
+  <canvas id="canvas03" width="160" height="120" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)" ondragover="allowDrop(event)" ondrop="drop(event)"></canvas>
+</div>
+
+<div class="box">
+  <canvas id="canvas10" width="160" height="120" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)"></canvas>
+  <canvas id="canvas11" width="160" height="120" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)"></canvas>
+  <canvas id="canvas12" width="160" height="120" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)"></canvas>
+  <canvas id="canvas13" width="160" height="120" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)"></canvas>
+</div>
+
+<div class="box">
+  <canvas id="canvas20" width="160" height="120" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)"></canvas>
+  <canvas id="canvas21" width="160" height="120" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)"></canvas>
+  <canvas id="canvas22" width="160" height="120" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)"></canvas>
+  <canvas id="canvas23" width="160" height="120" draggable="true" ondragstart="drag(event)" ondragover="allowDrop(event)" ondrop="drop(event)"></canvas>
+</div>
+
+<!-- <button type="button" name="button" id="pause_button">pause</button>
+<button type="button" name="button" id="play_button">play</button> -->
+
+<script>
+
+  var ROWS = 3;
+  var COLS = 4;
+  var tile_array = new Array();
+
+  for(var ri = 0; ri < ROWS; ri++) {
+    for(var ci = 0; ci < COLS; ci++) {
+      tile_array.push("tile"+ri+ci);
+    }
+  }
+
+  var video = document.getElementById("videoid");
+  video.play();
+  update(video);
+
+  // document.getElementById("pause_button").addEventListener("click", function(){
+  //   video.pause();
+  // });
+  // document.getElementById("play_button").addEventListener("click", function(){
+  //   video.play();
+  // });
+
+  function update(video) {
+    console.log("Update video!");
+    drawtiles(640, 360, ROWS, COLS, video);
+    setTimeout(function(){
+      update(video)
+    }, 33);
+  }
+
+  function drawtiles(w, h, r, c, source) {
+    var tileW = Math.round(w / c);
+    var tileH = Math.round(h / r);
+
+    for(var ri = 0; ri < r; ri++) {
+      for(var ci = 0; ci < c; ci++) {
+        var target_ri = parseInt(tile_array[ri*COLS+ci][4]);
+        var target_ci = parseInt(tile_array[ri*COLS+ci][5]);
+
+        var thecanvas = document.getElementById("canvas"+ri+ci);
+
+      //TO DO: implement the code for drawing the tile in the (target_ri, target_ci) position of the video,
+      //with width tileW and height tileH, onto this canvas in the (ri, ci) position of the web page
+        var ctx = thecanvas.getContext("2d");
+        // ctx.drawImage(video,ci*640/c,ri*360/r,160,120,0,0,160,120);
+        ctx.drawImage(source, target_ci * tileW, target_ri * tileH, tileW, tileH, 0, 0, tileW, tileH);
+      }
+    }
+  }
+
+  function allowDrop(ev){
+    ev.preventDefault();
+  }
+  function drag(ev){
+    ev.dataTransfer.setData("Text",ev.target.id);
+  }
+  function drop(ev){
+        ev.preventDefault();
+
+        var current_ri = parseInt(ev.dataTransfer.getData("text")[6]);
+        var current_ci = parseInt(ev.dataTransfer.getData("text")[7]);
+
+       //TO DO: complete the following code to retrieve row and colunm indices of the canvas element in the drop position, similar to how we retrieve row and colunm indices of the dragged canvas element in the above
+        var target_ri = parseInt(ev.target.getAttribute("id")[6]);
+        var target_ci = parseInt(ev.target.getAttribute("id")[7]);
+
+        var current_id = tile_array[current_ri*COLS + current_ci]; // "tile11"
+        var drop_id = tile_array[target_ri*COLS + target_ci]; // "tile00"
+
+       //TO DO: exchange current_id and drop_id in tile_array
+       tile_array[current_ri*COLS + current_ci] = drop_id;
+       tile_array[target_ri*COLS + target_ci] = current_id;
+  }
+
+  function shuffle() {
+	    var new_arr = tile_array.map(i => ({v: i, d: Math.random()}));
+	    new_arr.sort((a, b) => a.d - b.d);
+	    tile_array.splice(0, tile_array.length, ...new_arr.map(i => i.v));
+  }
+
+
+
+
+
+</script>
+</body>
+</html>

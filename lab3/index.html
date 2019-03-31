@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Stock Status System</title>
+    <link rel="stylesheet" type="text/css"  href="style.css">
+    <script type="text/javascript" src="lab3.js"></script>
+  </head>
+
+  <body onload="handleShowAll()">
+  	<h1>Stock Status System</h1>
+    <div id="List">
+		<div id="entries">
+		</div>
+
+		<div id="button_all" class="buttons" onclick="handleShowAll()">
+			<p> Show All</p>
+		</div>
+
+		<input id="stockcode" type="text">
+		<div class="buttons" onclick="handleFilterByStockcode()">
+			<p>Filter by Stockcode</p>
+		</div>
+
+		<input id="category" type="text">
+		<div class="buttons" onclick="handleFilterByCategory()">
+			<p>Filter by Category</p>
+		</div>
+    </div>
+
+  </body>
+</html>

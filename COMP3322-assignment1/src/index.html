@@ -1,0 +1,52 @@
+<!--  https://i.cs.hku.hk/~qyhu/comp3322_assignment1_submit1/src/index.html  -->
+<!--  https://chrome.google.com/extensions/detail/noaneddfkdjfnfdakjjmocngnfkfehhd  -->
+<!--  http://i.cs.hku.hk/tools/phpMyAdmin/  -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 minimum-scale=1">
+    <title>comp3322_a1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assignment1_js_code.js"></script>
+  </head>
+
+
+
+  <body id="body" onload="loadMainPage()">
+
+
+    <div class="heading">
+      <a href="index.html"><h1>Gavin's Shopping Site</h1></a>
+      <div class="shopping_cart">
+        <img class="col-9" id="shopping_cart_icon" src="../images/shopping_cart_icon.svg" alt="img loaded fail" onclick="showShoppingCart()">
+        <span class="col-10" id="total_item_in_shopping_cart"></span>
+      </div>
+    </div>
+
+    <!-- to record current category -->
+    <div class="category_list_and_items">
+      <div class="category_list col-1">
+
+      </div>
+
+      <div id="items" class="col-2">
+        <!-- items to be loaded   -->
+      </div>
+    </div>
+
+    <br>
+
+
+    <div class="page_change_section col-footer">
+      <p class="col-5" id="load_previous_page" onclick="loadPreviousPage()"> &lt Previous Page </p>
+
+      <input type="number" class="col-6" id="page_number" min="1" max="" onchange="loadSpecificPage(this.value)">
+
+      <span class="col-7" id="total_pages"></span>
+      <p class="col-8" id="load_next_page" onclick="loadNextPage()"> Next Page &gt </p>
+    </div>
+  </body>
+</html>
