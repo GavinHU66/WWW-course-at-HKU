@@ -1,0 +1,263 @@
+
+.body {
+  background-color: #f7f7f7;
+  font-family: sans-serif;
+}
+
+.heading {
+  background: -webkit-linear-gradient(69deg, #10abff, #1beabd);
+  background: linear-gradient(21deg, #10abff, #1beabd);
+  background-position: center center;
+  text-align: center;
+  color: white;
+  letter-spacing: 1.2px;
+  font-weight: bold;
+  text-indent: -34px;
+  padding-left: 34px;
+  font-family: sans-serif;
+  height: 125px;
+  border: 0;
+  margin: 0;
+  padding: 0px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-input {
+  width: 100%;
+  text-align: center;
+}
+
+.login-page {
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #474747;
+}
+
+.navibar {
+  width: 100%;
+  display: block;
+  font-size: xx-large;
+  font-family: sans-serif;
+  text-align: center;
+}
+.navibar-user-icon {
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navibar-user-name {
+  cursor: pointer;
+}
+
+.user-icon {
+  height: 100px;
+  width: 100px;
+}
+
+
+.navibar-logout-button {
+  position: absolute;
+  right: 20px;
+}
+
+.delete-popup {
+  width: 250px;
+  height: 100px;
+  background: aliceblue;
+  position: absolute;
+  border: 0px solid #2eb9ce;
+  box-shadow: 0px 0px 5px 0px #00ecff;
+}
+
+.cancel-delete-button {
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+  font-size: 15px;
+}
+
+.confirm-delete-button {
+  position: absolute;
+  right: 30px;
+  bottom: 10px;
+  font-size: 15px;
+}
+
+.prompt-delete-text {
+  font-size: large;
+  position: absolute;
+  text-align: center;
+  width: 90%;
+  margin: 13px;
+}
+
+button {
+  background: linear-gradient(21deg, #10abff, #1beabd);
+  background-position: center center;
+	background-color:#7892c2;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:13px;
+	font-weight:bold;
+	padding:8px 8px;
+	text-decoration:none;
+}
+
+button:hover {
+  background: linear-gradient(to bottom, #0f79fa 5%, #7892c2 100%);
+  background-color: #0f79fa;
+}
+
+input {
+    -webkit-border-radius: 20px;
+}
+
+input:hover {
+    -webkit-border-radius: 20px;
+    border: 0px solid #2eb9ce;
+    box-shadow: 0px 0px 5px 0px #00ecff;
+}
+
+.login-input {
+  margin-left: 10px;
+  height: 20px;
+}
+
+.commment-input {
+  width: 300px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.user-profile-input {
+
+}
+
+.signin-button {
+  position: relative;
+  margin: -20px -50px;
+  width: 100px;
+  top: 50%;
+  left: 50%;
+}
+
+.starred-friend-list {
+  font-family: sans-serif;
+}
+.starred-friend-list-heading {
+  font-size: x-large;
+}
+.starred-friend-list-friend {
+  font-size: large;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.user-profile {
+  width: 65%;
+  float: left;
+  font-family: sans-serif;
+}
+.user-profile-heading {
+  font-size: x-large;
+}
+.user-profile-label {
+  font-size: large;
+}
+
+.social-media-heading {
+  font-family: sans-serif;
+  font-size: x-large;
+}
+
+.star {
+  position: absolute;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+}
+
+.post {
+  font-family: sans-serif;
+  float: left;
+  margin-top: 30px;
+}
+
+.post-images {
+  /* width: 30%; */
+}
+
+.post-textcontent {
+  /* width: 70%; */
+}
+
+.post-name {
+  font-size: large;
+}
+.post-location {
+  font-size: smaller;
+}
+.post-time {
+  font-size: smaller;
+}
+
+.post-content {
+  font-size: larger;
+}
+
+
+.comment-container {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.comment {
+  font-size: small;
+}
+
+
+
+.input_text {
+
+}
+
+
+[class*="col-"] {
+  float: left;
+  padding: 10px;
+}
+
+.col-1 {width: 30%;}
+.col-2 {width: 60%;}
+
+.col-3 {width: 30%;}
+.col-4 {width: 55%;}
+.col-5 {width: 65%;}
+
+
+/* .col-5 {width: 16%;}
+.col-6 {width: 10%;}
+.col-7 {width: 10%;}
+.col-8 {width: 13%;} */
+
+/* .col-9 {width: 5%;} */
+/* .col-10 {width: 5%;}
+
+.col-11 {width: 100%;}
+
+.col-12 {width: 100%;} */
+
+@media only screen and (max-width: 768px) {
+  [class*="col-"] {
+    width: 100%;
+  }
+}
